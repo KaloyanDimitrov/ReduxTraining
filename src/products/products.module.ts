@@ -12,6 +12,9 @@ import * as fromContainers from './containers';
 
 // services
 import * as fromServices from './services';
+import { effects, reducers } from './store';
+import { StoreModule } from '../../node_modules/@ngrx/store';
+import { EffectsModule } from '../../node_modules/@ngrx/effects';
 
 // routes
 export const ROUTES: Routes = [
@@ -34,6 +37,8 @@ export const ROUTES: Routes = [
     CommonModule,
     ReactiveFormsModule,
     HttpClientModule,
+    StoreModule.forFeature('products', reducers),
+    EffectsModule.forFeature(effects),
     RouterModule.forChild(ROUTES),
   ],
   providers: [...fromServices.services],
